@@ -4,9 +4,19 @@
 \name{boundaries-package}
 \alias{boundaries}
 \alias{boundaries-package}
-\title{boundaries: What the Package Does (One Line, Title Case)}
+\title{boundaries: Algorithms for Working With and Modifying Polygon Boundaries}
 \description{
-What the package does (one paragraph).
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
+A range of algorithms exists primarily to modify the boundary of polygons in different ways. The most important are probably offsetting/insetting and simplification. The 'boundaries' package provide a selection of such algorithms for use with polygons from the 'polyclid' package.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/thomasp85/boundaries}
+  \item Report bugs at \url{https://github.com/thomasp85/boundaries/issues}
+}
+
 }
 \author{
 \strong{Maintainer}: Thomas Lin Pedersen \email{thomasp85@gmail.com} (\href{https://orcid.org/0000-0002-5147-4711}{ORCID})

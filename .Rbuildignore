@@ -3,3 +3,6 @@
 ^LICENSE\.md$
 ^README\.Rmd$
 ^cran-comments\.md$
+^codecov\.yml$
+^\.github$
+^CODE_OF_CONDUCT\.md$
