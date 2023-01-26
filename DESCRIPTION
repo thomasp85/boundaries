@@ -1,0 +1,32 @@
+Package: boundaries
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.0.9000
+Authors@R: 
+    person("Thomas Lin", "Pedersen", , "thomasp85@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-5147-4711"))
+Description: What the package does (one paragraph).
+License: MIT + file LICENSE
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.1
+LinkingTo: 
+    cpp11 (>= 0.2.3),
+    euclid,
+    polyclid,
+    cgalh,
+    BH
+SystemRequirements: 
+    C++14,
+    gmp,
+    mpfr
+Depends: 
+    euclid
+Imports: 
+    cli,
+    rlang
+Remotes: 
+    dickoa/cgalh,
+    thomasp85/euclid
