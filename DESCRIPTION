@@ -1,10 +1,14 @@
 Package: boundaries
-Title: What the Package Does (One Line, Title Case)
+Title: Algorithms for Working With and Modifying Polygon Boundaries
 Version: 0.0.0.9000
 Authors@R: 
     person("Thomas Lin", "Pedersen", , "thomasp85@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-5147-4711"))
-Description: What the package does (one paragraph).
+Description: A range of algorithms exists primarily to modify the boundary of
+    polygons in different ways. The most important are probably 
+    offsetting/insetting and simplification. The 'boundaries' package provide
+    a selection of such algorithms for use with polygons from the 'polyclid'
+    package.
 License: MIT + file LICENSE
 Suggests: 
     testthat (>= 3.0.0)
