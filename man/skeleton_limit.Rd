@@ -30,7 +30,7 @@ plot(poly)
 euclid_plot(vert(skeleton_limit_location(poly)))
 
 # But certain geometries will result in segments rather than lines
-poly <- polygon(
+poly <- polyclid::polygon(
   c(1, 1, 2, 2, -2, -2, -1, -1),
   c(-2, 0, 0, 2, 2, 0, 0, -2)
 )

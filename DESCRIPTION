@@ -35,5 +35,6 @@ Imports:
 Remotes: 
     dickoa/cgalh,
     thomasp85/euclid
-URL: https://github.com/thomasp85/boundaries
+URL: https://github.com/thomasp85/boundaries,
+    https://thomasp85.github.io/boundaries/
 BugReports: https://github.com/thomasp85/boundaries/issues

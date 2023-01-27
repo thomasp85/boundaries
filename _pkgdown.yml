@@ -1,0 +1,68 @@
+destination: docs
+url: https://boundaries.r-euclid.com
+
+authors:
+  Thomas Lin Pedersen:
+    href: https://data-imaginist.com
+
+home:
+  title: >
+    boundaries: Tools for working with polyclid polygon boundaries
+  description: >
+    boundaries is a utility package for the euclid ecosystem collecting tools
+    for working with and modifying the boundaries of polygons, e.g. performing
+    simplification while retaining approximate features, offsetting and
+    insetting, etc.
+
+template:
+  bootstrap: 5
+  theme: a11y-light
+  bslib:
+    bg: "#F7FAF4"
+    fg: "#0B0B0B"
+    primary: "#23507F"
+    base_font: {google: "Gelasio"}
+    heading_font: {google: "Montserrat"}
+    code_font: {google: "Fira Code"}
+  opengraph:
+    image:
+      src: man/figures/card.png
+      alt: "boundaries: Tools for manipulating polyclid polygons"
+    twitter:
+      creator: "@thomasp85"
+      site: "@rstudio"
+      card: summary_large_image
+
+navbar:
+  bg: primary
+  type: dark
+  structure:
+    left:
+    - intro
+    - reference
+    - articles
+    - tutorials
+    - news
+    right:
+    - euclid
+    - github
+  components:
+    reference:
+      text: Reference
+      href: reference/index.html
+    euclid:
+      text: Euclid ecosystem
+      menu:
+      - text: Foundation
+      - text: Euclid
+        href: https://r-euclid.com
+      - text: Polyclid
+        href: https://polyclid.r-euclid.com
+      - text: -------
+      - text: Utilities
+      - text: Orion
+        href: https://orion.r-euclid.com
+    github:
+      icon: fab fa-github fa-lg
+      href: https://github.com/thomasp85/boundaries/
+      aria-label: github
