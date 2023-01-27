@@ -34,7 +34,8 @@ Imports:
     rlang
 Remotes: 
     dickoa/cgalh,
-    thomasp85/euclid
+    thomasp85/euclid,
+    thomasp85/polyclid
 URL: https://github.com/thomasp85/boundaries,
-    https://thomasp85.github.io/boundaries/
+    https://boundaries.r-euclid.com
 BugReports: https://github.com/thomasp85/boundaries/issues
