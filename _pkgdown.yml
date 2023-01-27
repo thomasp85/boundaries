@@ -60,6 +60,8 @@ navbar:
         href: https://polyclid.r-euclid.com
       - text: -------
       - text: Utilities
+      - text: Boundaries
+        href: https://boundaries.r-euclid.com
       - text: Orion
         href: https://orion.r-euclid.com
     github:
