@@ -5,6 +5,20 @@
 #include "cpp11/declarations.hpp"
 #include <R_ext/Visibility.h>
 
+// add_detail.cpp
+SEXP poly_add_detail(SEXP poly, cpp11::integers c, cpp11::doubles l, cpp11::integers n, bool use_l, bool use_n);
+extern "C" SEXP _boundaries_poly_add_detail(SEXP poly, SEXP c, SEXP l, SEXP n, SEXP use_l, SEXP use_n) {
+  BEGIN_CPP11
+    return cpp11::as_sexp(poly_add_detail(cpp11::as_cpp<cpp11::decay_t<SEXP>>(poly), cpp11::as_cpp<cpp11::decay_t<cpp11::integers>>(c), cpp11::as_cpp<cpp11::decay_t<cpp11::doubles>>(l), cpp11::as_cpp<cpp11::decay_t<cpp11::integers>>(n), cpp11::as_cpp<cpp11::decay_t<bool>>(use_l), cpp11::as_cpp<cpp11::decay_t<bool>>(use_n)));
+  END_CPP11
+}
+// corner_clip.cpp
+SEXP poly_corner_cutting(SEXP poly, cpp11::doubles max_angle, cpp11::doubles max_cut, cpp11::integers n_cut);
+extern "C" SEXP _boundaries_poly_corner_cutting(SEXP poly, SEXP max_angle, SEXP max_cut, SEXP n_cut) {
+  BEGIN_CPP11
+    return cpp11::as_sexp(poly_corner_cutting(cpp11::as_cpp<cpp11::decay_t<SEXP>>(poly), cpp11::as_cpp<cpp11::decay_t<cpp11::doubles>>(max_angle), cpp11::as_cpp<cpp11::decay_t<cpp11::doubles>>(max_cut), cpp11::as_cpp<cpp11::decay_t<cpp11::integers>>(n_cut)));
+  END_CPP11
+}
 // minkowski.cpp
 SEXP polygon_minkowski_offset(SEXP polygons, SEXP offset, cpp11::integers n, double eps);
 extern "C" SEXP _boundaries_polygon_minkowski_offset(SEXP polygons, SEXP offset, SEXP n, SEXP eps) {
@@ -57,6 +71,8 @@ extern "C" SEXP _boundaries_polygon_skeleton_limit_location(SEXP polygons) {
 
 extern "C" {
 static const R_CallMethodDef CallEntries[] = {
+    {"_boundaries_poly_add_detail",                 (DL_FUNC) &_boundaries_poly_add_detail,                 6},
+    {"_boundaries_poly_corner_cutting",             (DL_FUNC) &_boundaries_poly_corner_cutting,             4},
     {"_boundaries_poly_simplify",                   (DL_FUNC) &_boundaries_poly_simplify,                   5},
     {"_boundaries_polygon_minkowski_offset",        (DL_FUNC) &_boundaries_polygon_minkowski_offset,        4},
     {"_boundaries_polygon_minkowski_sum",           (DL_FUNC) &_boundaries_polygon_minkowski_sum,           2},

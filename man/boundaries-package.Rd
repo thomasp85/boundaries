@@ -14,7 +14,7 @@ A range of algorithms exists primarily to modify the boundary of polygons in dif
 Useful links:
 \itemize{
   \item \url{https://github.com/thomasp85/boundaries}
-  \item \url{https://thomasp85.github.io/boundaries/}
+  \item \url{https://boundaries.r-euclid.com}
   \item Report bugs at \url{https://github.com/thomasp85/boundaries/issues}
 }
 

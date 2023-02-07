@@ -1,0 +1,75 @@
+#' Round corners with an adaptive version of Chaikin's Corner Cutting algorithm
+#'
+#' Corners can be rounded in many ways. One approach is to recursively cut away
+#' a part of the corner, introducing a new edge into the line/polygon. Chaikin's
+#' algorithm defines the cut to be placed 1/4th into the edges on either side of
+#' the corner. As the recursion progresses the result approaches the bspline
+#' defined by the points. Chaikins algorithm works best on rather coarse
+#' polygons as the edge length defines the extent of the cutting. Subdividing
+#' all edges into two will thus alter the result of the algorithm, just like
+#' adding more control points would alter a b spline. The corner cutting
+#' provided here is based on the idea of chaikin but is adaptive so that it can
+#' ignore vertices with very obtuse angles, as well as set an upper bound on how
+#' big the cut can be, meaning that the distance between corner points have less
+#' effect on the rounding.
+#'
+#' @param poly A `polyclid_polygon` or `polyclid_polyline` vector
+#' @param max_angle The maximum inner angle at a vertex for it to be considered
+#' a corner
+#' @param max_cut The maximum distance from the corner vertex the rounding may
+#' influence the polygon. Take note that this is not a measure of the radius of
+#' the rounding as this depends on the angle of the corner
+#' @param n_cuts The number of iterations to perform of the cutting. Be aware
+#' that the number of additional edges increases exponentially with the number
+#' of cuts so increase this only in small steps.
+#'
+#' @return A vector of the same type as `poly`. Be aware that corner cutting may
+#' render a polygon invalid as the rounding may cause edges to cross.
+#'
+#' @importFrom polyclid is_polygon is_polyline
+#' @export
+#'
+#' @examples
+#' poly <- polyclid::polygon(
+#'   c(391, 240, 252, 374, 289, 134, 68, 154, 161, 435, 208, 295, 421, 441),
+#'   c(374, 431, 340, 320, 214, 390, 186, 259, 107, 108, 148, 160, 212, 303)
+#' )
+#' plot(poly)
+#'
+#' # Default values provide non-adaptive behaviour
+#' plot(corner_clip(poly))
+#'
+#' # As can be seen, this behaviour is sensitive to the density of the polygon
+#' euclid_plot(corner_clip(densify_poly(poly, n_splits = 2)), lty = 2)
+#'
+#' # Use max_cut to have more local rounding
+#' plot(corner_clip(poly, max_cut = 25))
+#'
+#' # Use max_angle to leave out very obtuse angled vertices
+#' plot(corner_clip(poly, max_cut = 25, max_angle = pi * 0.8))
+#'
+#' # The corner cutting also works for polylines
+#' poly <- polyclid::polyline(
+#'   c(391, 240, 252, 374, 289, 134, 68, 154, 161, 435),
+#'   c(374, 431, 340, 320, 214, 390, 186, 259, 107, 108)
+#' )
+#' plot(poly)
+#' euclid_plot(corner_clip(poly, max_cut = 25), lty = 2, col = "red")
+corner_clip <- function(poly, max_angle = Inf, max_cut = Inf, n_cuts = 4L) {
+  if (!is_polygon(poly) && !is_polyline(poly)) {
+    cli_abort("{.arg poly} must be a polygon or polyline vector")
+  }
+  max_angle <- as.numeric(max_angle)
+  if (anyNA(max_angle) || any(max_angle <= 0)) {
+    cli_abort("{.arg max_angle} must be positive")
+  }
+  max_cut <- as.numeric(max_cut)
+  if (anyNA(max_cut) || any(max_cut <= 0)) {
+    cli_abort("{.arg max_cut} must be positive")
+  }
+  n_cuts <- as.integer(n_cuts)
+  if (anyNA(n_cuts) || any(n_cuts <= 0)) {
+    cli_abort("{.arg n_cuts} must be positive integers")
+  }
+  poly_corner_cutting(poly, max_angle, max_cut, n_cuts)
+}

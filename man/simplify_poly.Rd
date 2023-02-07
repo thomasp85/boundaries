@@ -53,3 +53,8 @@ plot(simplify_poly(poly[1], stop = "below count", stop_threshold = 20))
 euclid_plot(poly[1], lty = 2, border = "red")
 
 }
+\seealso{
+Other boundary resolution: 
+\code{\link{densify_poly}()}
+}
+\concept{boundary resolution}

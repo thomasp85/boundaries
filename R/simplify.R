@@ -14,6 +14,7 @@
 #'
 #' @return A vector of the same type as `poly`
 #'
+#' @family boundary resolution
 #' @export
 #'
 #' @examples
